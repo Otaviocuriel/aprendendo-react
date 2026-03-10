@@ -1,0 +1,5 @@
+.Rodape{
+    background: var{--preto};
+    color: var(--cinza);
+    padding: 0.5rem 1rem;
+}
