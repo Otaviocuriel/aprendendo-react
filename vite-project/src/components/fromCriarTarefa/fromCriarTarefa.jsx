@@ -1,9 +1,13 @@
-const fromCriarTarefa = () => {
+import { Botao, CampoTexto } from "../../components";
+import style from './fromCriarTarefa.module.css';
+
+const FormCriarTarefa = () => {
     return(
-        <from> 
-            
-        </from>
+        <form className={style.fromCriarTarefa}> 
+            <CampoTexto />
+            <Botao texto="+"/>
+        </form>
     );
 };
 
-export {fromCriarTarefa};
+export { FormCriarTarefa };
