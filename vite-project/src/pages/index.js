@@ -1,1 +1,3 @@
-export * from './inicial';
+export * from './Inicial';
+export * from './SobreNos';
+

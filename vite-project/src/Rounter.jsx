@@ -1,17 +1,16 @@
-import {Rountes} from 'react-router-dom';
-import {Inicial} from './pages';
-import { SobreNos } from './pages/SobreNos';
-
-
+import { Route, Routes } from "react-router-dom";
+import { Inicial, SobreNos } from "./pages";
+import { LayoutPadrao } from "./layouts";
 
 const Rounter = () => {
-    return(
-        <Rounter>
-            <Rounte path="/" element={<Inicial/>}/>
-            <Rounte path="/Sobre-nos" element={<SobreNos/>}/>
-
-        </Rounter>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<LayoutPadrao />}>
+        <Route index element={<Inicial />} />
+        <Route path="sobre-nos" element={<SobreNos />} />
+      </Route>
+    </Routes>
+  );
 };
 
-export {Rounter};
+export { Rounter };
