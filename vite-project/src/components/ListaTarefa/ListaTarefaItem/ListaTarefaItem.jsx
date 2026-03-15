@@ -1,14 +1,22 @@
 import { Botao,TIPO_BOTAO } from "../../Botao";
+import { useAppContext } from "../../../hooks";
+
 import style from "./ListaTarefasItem.module.css";
 
 
 const ListaTarefaItem = (props) => {
-    const { nome } = props; 
+    const { id, nome } = props; 
+
+    const { removerTarefa } = useAppContext();
 
     return(
         <li className={style.ListaTarefaItem}>
             {nome}
-            <Botao texto="-" tipo={TIPO_BOTAO.SEGUNDARIO}/>
+            <Botao
+             texto="-"
+             tipo={TIPO_BOTAO.SEGUNDARIO}
+             onClick={() => removerTarefa(id)}
+            />
         </li>
     );
 };
