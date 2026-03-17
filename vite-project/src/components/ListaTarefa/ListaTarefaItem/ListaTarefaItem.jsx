@@ -1,22 +1,29 @@
-import { Botao,TIPO_BOTAO } from "../../Botao";
+import { Botao, TIPO_BOTAO, CampoTexto } from "../..";
 import { useAppContext } from "../../../hooks";
+import { useState } from "react";
 
 import style from "./ListaTarefasItem.module.css";
 
-
 const ListaTarefaItem = (props) => {
-    const { id, nome } = props; 
+    const { id, nome } = props;
+
+    const [estaEditando, setEstaEditando] = useState(false);
 
     const { removerTarefa } = useAppContext();
 
-    return(
+    return (
         <li className={style.ListaTarefaItem}>
-            {nome}
+
+            {estaEditando && <CampoTexto />}
+
+            {!estaEditando && <span>{nome}</span>}
+
             <Botao
-             texto="-"
-             tipo={TIPO_BOTAO.SEGUNDARIO}
-             onClick={() => removerTarefa(id)}
+                texto="-"
+                tipo={TIPO_BOTAO.SEGUNDARIO}
+                onClick={() => removerTarefa(id)}
             />
+
         </li>
     );
 };
