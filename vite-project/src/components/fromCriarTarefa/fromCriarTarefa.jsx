@@ -15,15 +15,14 @@ const [nomeTarefa, setNomeTarefa] = useState('');
         setNomeTarefa(event.currentTarget.value);
     };
 
-    const submeterFormulario = (event) => {
+    const submeterFormulario = async (event) => {
         event.preventDefault();
 
         if(!nomeTarefa){
             return;
         }
 
-
-        adicionarTarefa(nomeTarefa);
+        await adicionarTarefa(nomeTarefa);
        
 
         setNomeTarefa('');

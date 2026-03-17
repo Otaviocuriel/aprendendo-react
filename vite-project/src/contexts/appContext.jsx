@@ -1,4 +1,5 @@
-import { createContext, useState} from "react";
+import {api} from "../services";
+import { createContext, useState, useEffect} from "react";
 
 
 export const AppContext = createContext({});
@@ -8,28 +9,33 @@ export const AppContextProvider = (props) =>{
 
     const [criador] = useState('Otavio');
 
-    const [tarefas, setTarefas] = useState([
-        { id: 1, nome: "Estudar React" },
-        { id: 2, nome: "Estudar Vite" },
-        { id: 3, nome: "Estudar JavaScript" },
+    const [tarefas, setTarefas] = useState([]);
 
-    ]);
+    const carregarTarefas = async () => {
+        const {data =[] }= await api.get('/tarefas');
 
-    const adicionarTarefa = (nomeTarefa) => {
+        setTarefas([
+            ...data,
+        ]);
+
+    };
+
+    const adicionarTarefa = async (nomeTarefa) => {
+        const {data: tarefa} = await api.post('/tarefas', {
+            nome: nomeTarefa,
+        });
          setTarefas(estadoAtual => {
-            const novaTarefa = {
-                id: estadoAtual.length + 1,
-                nome: nomeTarefa,
-            };
+            
                 return[
                     ...estadoAtual,
-                    novaTarefa,
+                    tarefa,
                 ];
         });
 
     };
 
-    const removerTarefa = (idTarefa) => {
+    const removerTarefa = async (idTarefa) => {
+        await api.delete(`tarefas/${idTarefa}`);
         setTarefas(estadoAtual => {
             const tarefasAtualizadas = estadoAtual.filter(tarefa => tarefa.id != idTarefa);
 
@@ -40,12 +46,19 @@ export const AppContextProvider = (props) =>{
 
     };
 
-    const editarTarefa = (idTarefa, nomeTarefa) => {
+    useEffect(() =>{
+        carregarTarefas();
+    },[]);
+
+    const editarTarefa = async (idTarefa, nomeTarefa) => {
+       const {data: tarefaAtualizada} = await api.put(`tarefas/${idTarefa}` , {
+            nome: nomeTarefa,
+            });
         setTarefas(estadoAtual => {
            const tarefasAtualizadas = estadoAtual.map(tarefa =>{
                 return tarefa.id === idTarefa ? {
                      ...tarefa,
-                      nome: nomeTarefa
+                      nome: tarefaAtualizada.nome,
                     } : tarefa;
             });
             return [

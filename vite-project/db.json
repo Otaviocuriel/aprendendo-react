@@ -1,8 +1,21 @@
 {
   "tarefas": [
-        { "id": 1, "nome": "Estudar React" },
-        { "id": 2, "nome": "Estudar Vite" },
-        { "id": 3, "nome": "Estudar JavaScript" }
-
-    ]
+    {
+      "nome": "Estudar React Atualizada",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "nome": "Estudar Vite"
+    },
+    {
+      "id": "3",
+      "nome": "Estudar JavaScript"
+    },
+    {
+      "id": "fcde",
+      "nome": "Teste API"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
