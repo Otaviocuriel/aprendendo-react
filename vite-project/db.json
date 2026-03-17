@@ -1,0 +1,8 @@
+{
+  "tarefas": [
+        { "id": 1, "nome": "Estudar React" },
+        { "id": 2, "nome": "Estudar Vite" },
+        { "id": 3, "nome": "Estudar JavaScript" }
+
+    ]
+}
