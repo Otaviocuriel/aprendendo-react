@@ -29,7 +29,7 @@ const ListaTarefaItem = (props) => {
             && (
              <CampoTexto
              defaultValue={nome}
-             onBlur={() => onBlurTarefa}
+                 onBlur={onBlurTarefa}
               autoFocus
                />
             )}

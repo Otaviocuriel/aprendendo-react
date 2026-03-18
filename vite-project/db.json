@@ -1,4 +1,9 @@
 {
-  "tarefas": [],
+  "tarefas": [
+    {
+      "nome": "teste de editar editando",
+      "id": "bb92"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
